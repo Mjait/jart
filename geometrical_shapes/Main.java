@@ -17,7 +17,7 @@ public class Main {
         }
 
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 30; i++) {
             Pentagon pentagon = Pentagon.random(image.getWidth(), image.getHeight());
             pentagon.draw(image);
         }
