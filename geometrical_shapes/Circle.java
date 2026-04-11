@@ -34,18 +34,17 @@ public class Circle implements Drawable {
         return color;
     }
 
+    
     @Override
-public void draw(Displayable displayable) {
-    for (int x = center.x - radius; x <= center.x + radius; x++) {
+    public void draw(Displayable displayable) {
+        int steps = (int) (2.0 * Math.PI * radius);
+        if (steps < 1) steps = 1;
 
-        int dx = x - center.x;
-
-        int y1 = center.y + (int) Math.sqrt(radius * radius - dx * dx);
-        int y2 = center.y - (int) Math.sqrt(radius * radius - dx * dx);
-
-        displayable.display(x, y1, getColor());
-        displayable.display(x, y2, getColor());
+        for (int i = 0; i < steps; i++) {
+            double theta = ((double) i / steps) * 2.0 * Math.PI;
+            int x = center.x + (int) (radius * Math.cos(theta));
+            int y = center.y + (int) (radius * Math.sin(theta));
+            displayable.display(x, y, getColor());
+        }
     }
-}
-
 }
